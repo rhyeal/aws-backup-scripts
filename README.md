@@ -27,10 +27,14 @@ First, create the proper IAM role for backing up your boxes. Something like the 
 
 Then create the Lambda jobs. **Use Python 2.7** for the runtime. Sorry, it's not py3 yet :/
 
-Create AMIs:
+Create AMIs: https://github.com/rhyeal/aws-backup-scripts/blob/master/create-amis.py
 
-Remove old AMIs:
+Remove old AMIs: https://github.com/rhyeal/aws-backup-scripts/blob/master/remove-amis.py
 
 Set up your Lambda job to run on a schedule. We use `cron(43 2 ? * * *)` and another job to remove old AMIs an hour later.
 
+## Gotchas
+
 Make sure you tag your instances with `Backup` and `Retention=(int) days`!
+
+Make sure you have a `Name` tag on all instances you want to back up or the script will fail.
